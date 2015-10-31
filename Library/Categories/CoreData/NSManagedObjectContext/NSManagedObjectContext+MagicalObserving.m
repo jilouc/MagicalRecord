@@ -11,7 +11,9 @@
 #import "NSManagedObjectContext+MagicalSaves.h"
 #import "MagicalRecordLogging.h"
 
+#if TARGET_OS_WATCH == 0
 NSString * const MagicalRecordDidMergeChangesFromiCloudNotification = @"kMagicalRecordDidMergeChangesFromiCloudNotification";
+#endif
 
 @implementation NSManagedObjectContext (MagicalObserving)
 
@@ -94,6 +96,7 @@ NSString * const MagicalRecordDidMergeChangesFromiCloudNotification = @"kMagical
 
 #pragma mark - Context iCloud Merge Helpers
 
+#if TARGET_OS_WATCH == 0
 - (void) MR_mergeChangesFromiCloud:(NSNotification *)notification;
 {
     void (^mergeBlock)(void) = ^{
@@ -112,6 +115,7 @@ NSString * const MagicalRecordDidMergeChangesFromiCloudNotification = @"kMagical
     };
     [self MR_performBlock:mergeBlock];
 }
+#endif
 
 - (void) MR_mergeChangesFromNotification:(NSNotification *)notification;
 {
@@ -143,6 +147,7 @@ NSString * const MagicalRecordDidMergeChangesFromiCloudNotification = @"kMagical
 	}
 }
 
+#if TARGET_OS_WATCH == 0
 - (void) MR_observeiCloudChangesInCoordinator:(NSPersistentStoreCoordinator *)coordinator;
 {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -160,6 +165,7 @@ NSString * const MagicalRecordDidMergeChangesFromiCloudNotification = @"kMagical
                                   name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
                                 object:coordinator];
 }
+#endif
 
 @end
 

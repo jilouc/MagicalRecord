@@ -10,7 +10,10 @@
 #import "MagicalRecordDeprecated.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+#if TARGET_OS_WATCH == 0
 extern NSString * __nonnull const MagicalRecordDidMergeChangesFromiCloudNotification;
+#endif
 
 /**
  Category methods to aid in observing changes in other contexts.
@@ -57,6 +60,8 @@ extern NSString * __nonnull const MagicalRecordDidMergeChangesFromiCloudNotifica
  */
 - (void) MR_observeContextDidSaveAndSaveChangesToSelf:(NSManagedObjectContext *)otherContext;
 
+#if TARGET_OS_WATCH == 0
+
 /**
  Merges changes from the supplied persistent store coordinator into self in response to changes from iCloud.
 
@@ -78,6 +83,8 @@ extern NSString * __nonnull const MagicalRecordDidMergeChangesFromiCloudNotifica
  @since Available in v2.0 and later.
  */
 - (void) MR_stopObservingiCloudChangesInCoordinator:(NSPersistentStoreCoordinator *)coordinator;
+
+#endif
 
 @end
 

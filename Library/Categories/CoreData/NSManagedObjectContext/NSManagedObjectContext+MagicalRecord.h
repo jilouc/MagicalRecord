@@ -8,7 +8,9 @@
 #import <CoreData/CoreData.h>
 NS_ASSUME_NONNULL_BEGIN
 
+#if TARGET_OS_WATCH == 0
 extern NSString * const MagicalRecordDidMergeChangesFromiCloudNotification;
+#endif
 
 @interface NSManagedObjectContext (MagicalRecord)
 

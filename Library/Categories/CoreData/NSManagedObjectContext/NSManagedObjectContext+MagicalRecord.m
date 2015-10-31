@@ -20,7 +20,9 @@ NSString * MR_concurrencyStringFromType(NSManagedObjectContextConcurrencyType ty
     return @"Unknown Concurrency";
 }
 
+#if TARGET_OS_WATCH == 0
 static id iCloudSetupNotificationObserver = nil;
+#endif
 
 static NSString * const kMagicalRecordNSManagedObjectContextWorkingName = @"kNSManagedObjectContextWorkingName";
 

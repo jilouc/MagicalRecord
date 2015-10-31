@@ -111,6 +111,7 @@
     return stack;
 }
 
+#if TARGET_OS_WATCH == 0
 + (MagicalRecordStack *) setupiCloudStackWithLocalStoreNamed:(NSString *)localStore;
 {
     ClassicSQLiteMagicalRecordStack *stack = [[ClassicSQLiteMagicalRecordStack alloc] initWithStoreNamed:localStore];
@@ -118,5 +119,6 @@
     [MagicalRecordStack setDefaultStack:stack];
     return stack;
 }
+#endif
 
 @end

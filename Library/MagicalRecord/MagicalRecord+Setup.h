@@ -28,7 +28,9 @@
 + (MagicalRecordStack *) setupClassicStackWithSQLiteStoreNamed:(NSString *)storeName;
 + (MagicalRecordStack *) setupClassicStackWithSQLiteStoreAtURL:(NSURL *)storeURL;
 
+#if TARGET_OS_WATCH == 0
 + (MagicalRecordStack *) setupiCloudStackWithLocalStoreNamed:(NSString *)localStore;
+#endif
 
 + (MagicalRecordStack *) setupStackWithInMemoryStore;
 

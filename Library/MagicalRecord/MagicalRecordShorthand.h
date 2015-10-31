@@ -133,9 +133,10 @@
 - (void) observeContext:(NSManagedObjectContext *)otherContext;
 - (void) stopObservingContext:(NSManagedObjectContext *)otherContext;
 - (void) observeContextOnMainThread:(NSManagedObjectContext *)otherContext;
+#if TARGET_OS_WATCH == 0
 - (void) observeiCloudChangesInCoordinator:(NSPersistentStoreCoordinator *)coordinator;
 - (void) stopObservingiCloudChangesInCoordinator:(NSPersistentStoreCoordinator *)coordinator;
-
+#endif
 @end
 
 
